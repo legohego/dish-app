@@ -19,7 +19,7 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
     };
 
   };
-  scope.items = ['Gluten', 'Nuts', 'Dairy', 'Celery'];
+  scope.items = ['Gluten', 'Nuts', 'Dairy', 'Celery','Egg', 'Oats', 'Meat', 'Rice', 'Soy', 'Wheat', 'Barley', 'Fish or Shellfish', 'Garlic'];
 
   scope.remove =function(req) {
     
