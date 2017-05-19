@@ -1,0 +1,16 @@
+{
+  "name": "dish",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "jshint-stylish": "latest",
+    "angular-jwt" :  "latest",
+    "angular-storage" : "latest",
+    "angular-ui-router" : "latest"
+  }
+}

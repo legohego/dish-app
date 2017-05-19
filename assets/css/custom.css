@@ -1,0 +1,113 @@
+.dropdown.dropdown-scroll .dropdown-menu {
+    max-height: 200px;
+    width: 60px;
+    overflow: auto;
+}
+.search-control {
+    padding: 5px 10px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.dish-form-c {
+	
+	border: solid 2px;
+	border-radius: 25px;
+	font-size: 20px;
+	margin:0 auto;
+	max-width: 50%;
+	text-align: center;
+
+}
+.dish-form-c > h2 {
+	padding-top: 0px;
+	margin: 0px;
+}
+.dish-form-c > div > form > {
+	margin-left: 5px;
+}
+
+.dish-form-c > div > form {
+	border:solid 2px;
+	border-radius: 25px;
+	margin: 10px;
+	padding: 20px;
+}
+.dish-form-c > div > form > input {
+
+	border-radius: 25px;
+	padding: 10px;
+  
+}
+.dish-form-c > div > form > div > input {
+
+	border-radius: 25px;
+	padding: 10px;
+  
+}
+.dish-form-c > div > form > button {
+	border-radius: 25px;
+	background-color: white;
+	padding: 10px;
+  
+}
+ .dish-form-button-c {
+	border-radius: 25px;
+	background-color: white;
+	padding: 10px;
+	margin: 5px;
+  
+}
+.filter-button-c {
+	display: block;
+    margin:0 auto;
+    margin-top: 10px;
+}
+
+
+.navigation-bar-c {
+	border: solid 2px;
+	border-radius: 25px;
+	font-size: 20px;
+	margin:0 auto;
+	max-width: 100%;
+	min-height: 30px;
+	text-align: center;
+    
+}
+
+.navigation-bar-c > ul {
+
+	padding: 0px;
+	margin: 0px;
+}
+.navigation-bar-c > p {
+	float: left;
+	margin: 0px;
+	padding-left: 5px;
+}
+.navigation-bar-c > ul > li {
+	padding-right: 5px;
+	margin: 0px;
+	float: left;
+	list-style-type: none;
+	text-decoration: none;
+}
+.navigation-bar-c > ul > li > button{
+	border-radius: 25px;
+	background-color: white;
+}
+.navigation-bar-c > ul > li > button> a{
+	color: black;
+	text-decoration-line: none;
+
+}
+.dietaryrequirement-list-c {
+	border: solid 2px;
+    border-radius: 25px;
+    margin:0 auto;
+	max-width: 50%;
+    min-height: 50px;	
+}
