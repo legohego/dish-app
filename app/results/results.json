@@ -1,0 +1,34 @@
+{
+  "list": [
+    {
+      "restraunt": "Kia",
+      "rating": 5,
+      "numberOfReviews": 300
+    },
+    {
+      "restraunt": "Quay Street Kitchen",
+      "rating": 4,
+      "numberOfReviews": 900
+    },
+    {
+      "restraunt": "Dail",
+      "rating": 3.5,
+      "numberOfReviews": 100
+    },
+    {
+      "restraunt": "Tusnu",
+      "rating": 3.5,
+      "numberOfReviews": 700
+    },
+    {
+      "restraunt": "Papa Johns",
+      "rating": 3.5,
+      "numberOfReviews": 230
+    },
+    {
+      "restraunt": "Buskers",
+      "rating": 3,
+      "numberOfReviews": 100
+    }
+  ]
+}

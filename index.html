@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-        <script src="app/routes.js"></script>
-        <script src="app/wrapper/wrapper-controller.js"></script> 
-        <script src="app/services/http-service.js"></script>
-        <script src="http://code.angularjs.org/1.4.8/angular-resource.js"></script>
-        <link rel= "stylesheet" href="assets/css/custom.css">
-    </head>
-    <body ng-app= "mainApp" ng-controller="wrapper-controller">
-        <div class = "navigation-bar-c">
-            <p>Logo</p>
-            <ul>
-                <li ><button>
-                    <a href="">
-                    Home
-                    </a>
-                    <a href="">
-                    About
-                    </a>
-                    </button>
-                </li>
-                <li ><button>
-                    <a href="">
-                    Contact us
-                    </a></button>
-                </li>
-                <li>
-                    <button>
-                    <a href="">
-                    Login
-                    </a>
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <div class = "dish-form-c">
-            <h2>Find the best Dish</h2>
-            <div>
-                <form>
-                      <input type="text" name="location" placeholder = "Location" ng-model = "searchDetails.location" list="location">
-                        <datalist id="location">
-                            <option  ng-repeat = 'location in locations.locations' value="{{location.name}}">{{location.name}}</option>
-                            
-                        </datalist>
-                
-                     <input type="text" name="dish" placeholder = "Dish" ng-model = "searchDetails.dish" list="dish">
-                        <datalist id="dish">
-                            <option value="Steak">
-                            <option value="Pasta">
-                        </datalist>
-                    <button class = "dish-form-button-c" ng-hide = "searchDetails.detailed == true">Quick Search</button>
-                    <button class = "filter-button-c" ng-click = "searchDetails.detailed =! searchDetails.detailed">Detailed Search</button>
-                    <div ng-show = "searchDetails.detailed">
-                        <p>Add dietary requirement</p>
- <input type="text" ng-model = "test">
-        <div>
-            <button class ="dish-form-button-c" ng-repeat="item in items| filter:test  " ng-bind="item" ng-click = "addRequirements(item)"></button>
-        </div>
-                        <div>
-                        <p>Your dietary requirments</p>
-                        <div class = "dietaryrequirement-list-c">
-                            
-                            <button class ="dish-form-button-c" ng-repeat = 'requirement in dietrayRequirments' value="{{requirement}}" ng-click ="remove(requirement)"> {{requirement}}</button>
-                            
-                        </datalist>
-                     
-                        </div>
-                        <button class ="dish-form-button-c">Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </body>
+  <head>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQQmkW30DNP4DaeizpsJEMlHsMTb70lBQ&libraries=places"
+      type="text/javascript" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/wrapper/wrapper-controller.js"></script>
+    <script src="app/services/http-service.js"></script>
+    <script src="http://code.angularjs.org/1.4.8/angular-resource.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body ng-app="mainApp" ng-controller="wrapper-controller" >
+    <div class="navigation-bar-c" ng-include="'app/navigation-bar/navigation-bar.html'"></div>
+    <h1 class ="h1-c">Find The Best Dish For You</h1>
+    <div class="dish-form-c" ng-show="searchDetails.showMainForm">
+      <div>
+      
+        <form name = "form">
+          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="searchDetails.location" placeholder="Type Address"autocomplete="off" placeholder="Location" >
+          <input class ="form-input-c" type="text" name="dish" placeholder="Dish" ng-model="searchDetails.dish" list="dish" ng-change = "searchDetail.dish = form.dish.$viewValue">
+          <datalist id="dish">
+            <option value="Steak">
+            <option value="Pasta">
+          </datalist>
+          <button class="form-button-c " ng-click="searchDetails.showDetailedForm=! searchDetails.showDetailedForm ">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
+          <div ng-show="searchDetails.showDetailedForm ">
+          <p>Add dietary requirement</p>
+          <input type="text " ng-model="searchDetails.filter " placeholder="Search for requirements">
+          <div >
+          <requirement-button ng-repeat="value in dietaryRequirementList | filter: searchDetails.filter" value = "value" searchDetails ="searchDetails" add-or-remove-requirement = "addOrRemoveRequirements(value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>         
+          </div>
+          <div>
+          <p>Filter</p>
+          </div>
+          </div>
+          <button class="form-button-c search-button-c" ng-click="searchResults.show.show = true; searchDetails.showMainForm = false" ng-disabled="searchDetails.location == '';  searchDetails.dish=='' " ng-class = "{'button-disabled-c' : searchDetails.location == '' || searchDetails.dish== ''}" >Search <i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+      </div>
+    </div>
+    <div ng-show="searchResults.show ">
+    <div class="filterParams">
+    <p>Search Data</p>
+    <p> <input class="form-input-c id="locationTextField" type="text" name="location" placeholder="{{searchDetails.location || 'Search...'}}" ng-model="searchDetails.location" list="location"></p>
+    <p><input class="form-input-c" type="text" name="dishs" placeholder="{{searchDetails.dish ||'Dish'}}" ng-model="searchDetails.dish" list="dishs">
+    <datalist id="dishs">
+    <option value="Steak">
+    <option value="Pasta">
+    <option value="Soup">
+    <option value="Pizza">
+    </datalist></p>
+    <button class="badge-c form-button-c " ng-click="showFilters =! showFilters">Filters {{searchDetails.dietrayRequirments.length || '0'}}</button> </p>
+    <p>
+    <input  ng-show ="showFilters"  id="requirements" class="form-input-c" type="text " ng-model="searchDetails.filter " placeholder="Filters: " list="requirements">
+    </p>
+    <div ng-show ="showFilters" class="side-bar-dietaryrequirement-list-c " >
+    
+    <requirement-button ng-repeat="value in dietaryRequirementList | filter: searchDetails.filter" value = "value" searchDetails ="searchDetails" add-or-remove-requirement = "addOrRemoveRequirements(value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>
+    <div class="dish-results-c " ng-hide="searchResults.show" >
+    <h2 >Search Results: {{results.length}}</h2>
+    <div ng-repeat="result in results ">
+    <h3>{{result.restraunt}}</h3>
+    <h4>{{result.rating}}</h4>
+    <h4>Reviews: {{result.NumberOfReviews}}</h4>
+    <h4>Description: {{result.Description}}</h4>
+    </div>
+    </div>
+  </body>
+  <script type='text/javascript'>
+    function initialize() {
+      var input = document.getElementById('locationTextField');
+    
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    };
+    
+      google.maps.event.addDomListener(window, 'load', initialize);
+    
+  </script>
 </html>

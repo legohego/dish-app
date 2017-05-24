@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="assets/css/custom.css">
+<div>
+    <div class="filterParams">
+      <p>Search Data - Location: {{searchDetails.location}} - Dish: {{searchDetails.dish}}</p>
+      <p>Filter Data - Allergies:</p>
+      <div class="dietaryrequirement-list-c " >
+        <requirement-button ng-repeat="value in searchDetails.dietrayRequirments" value = "value" searchDetails ="searchDetails" add-or-remove-requirement = "addOrRemoveRequirements(value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>
+      </div>
+    <div class="dish-results-c ">
+      <h2>Search Results: {{results.length}}</h2>
+      <div ng-repeat="result in results ">
+        <h3>{{result.restraunt}}</h3>
+        <h4>{{result.rating}}</h4>
+        <h4>Reviews: {{result.NumberOfReviews}}</h4>
+        <h4>Description: {{result.Description}}</h4>
+      </div>
+    </div>
