@@ -11,11 +11,11 @@ body {
 	margin: 0px;
 	padding: 0px;
 	min-height: 800px;
-	background: linear-gradient(180deg,  #30c9e8 400px, white 400px);
+	background: linear-gradient(180deg,  #30c9e8 400px, #fdfdfd 400px);
 	background-repeat: no-repeat;
 
 }
-.dish-form-c {
+.meal-form-c {
 	margin-top: 100px !important;
 	border: solid 3px;
 	border-color: #54bbcf;
@@ -24,37 +24,37 @@ body {
 	margin:0 auto;
 	max-width: 50%;
 	text-align: center;
-	background-color: white;
+	background-color: #fdfdfd;
 
 }
-.dish-form-c > h2 {
+.meal-form-c > h2 {
 	padding-top: 0px;
 	margin: 0px;
 }
-.dish-form-c > div > form > {
+.meal-form-c > div > form > {
 	margin-left: 5px;
 
 }
 
-.dish-form-c > div > form {
+.meal-form-c > div > form {
 	
 	border-radius: 25px;
 	margin: 10px;
 	padding: 20px;
 }
-.dish-form-c > div > form > input {
+.meal-form-c > div > form > input {
 
 	border-radius: 25px;
 	padding: 10px;
   
 }
-.dish-form-c > div > form > div > input {
+.meal-form-c > div > form > div > input {
 
 	border-radius: 25px;
 	padding: 10px;
   
 }
-.dish-form-c > div > form > button {
+.meal-form-c > div > form > button {
 	border-radius: 25px;
 	background-color: white;
 	padding: 10px;
@@ -80,7 +80,7 @@ body {
 }
 .h1-c {
 	text-align: center;
-color: white;
+color: #fdfdfd;
 }
 .button-disabled-c {
 	cursor:no-drop !important;
@@ -95,14 +95,15 @@ color: white;
 	cursor:pointer;
 }
 button:hover {
-    background-color:  #42e5f4 !important;
+    background-color: #66ff33 !important;
 
 }
 .search-button-c {
-display: block;
+    display: block;
     margin:0 auto;
   
 }
+
 .filter-button-c {
 	display: block;
     margin:0 auto;
@@ -165,7 +166,7 @@ display: block;
 	border: solid 2px;
     border-radius: 25px;
     margin:0 auto;
-	max-width: 350px;
+	max-width: 340px;
     min-height: 50px;
 	background-color: white;
 	border-color: #54bbcf;
@@ -185,19 +186,25 @@ display: block;
     min-width: 20%;
 	text-align: left;
 	background-color: white;
+	min-width: 355px;
 }
 .filterParams > p{
  padding-left: 10px;
 
 }
-.dish-results-c {
-	
+.meal-results-c {
+	background-color: #fdfdfd;
 	border: solid 2px;
 	border-radius: 25px;
+	border-color: #54bbcf;
 	font-size: 20px;
-	margin:0 auto;
-	max-width: 50%;
+	float: left;
+	max-width: 100%;
+	min-width:70%;
 	text-align: center;
+	 margin-left: 10px;
+	 overflow: scroll;
+	 max-height: 800px;
 
 }
 .choosen {
@@ -206,9 +213,19 @@ display: block;
 
 .badge-c {
 	cursor: pointer;
-	 background-color: #54bbcf;
-     color: #fff;
+	 background-color: white;
+     color: black;
      border-radius: 25px;
      min-width: 10px;
      min-height: 10px;
+}
+.results-data-c {
+ border: solid 2px;
+ border-color: #54bbcf;
+ margin: 5px;
+ border-radius: 25px;
+
+}
+.star{
+	color:  #30c9e8;
 }

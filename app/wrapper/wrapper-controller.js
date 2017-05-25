@@ -1,59 +1,64 @@
-mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', function(scope, rootScope, httpService) {
-  
-  scope.searchDetails = {
+mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', 'urlService', function(scope, rootScope, httpService, urlService) {
+  var api_url = urlService.returnUrl();
+  scope.form = {
     location: '',
-    dish: '',
-    showDetailedForm: false,
-    dietrayRequirments: [],
-    filter: '',
-    showMainForm: true
+    meal: '',
+    showFilterOptions: false,
+    filterList: [],
+    filterText: '',
+    showMainForm: true,
+    showSideForm: false
   };
-  scope.searchResults = {
-    show: false
+  scope.results = {
+    show: false,
+    data: []
   };
-  scope.hi = function(req) {
-   
-    var index = scope.searchDetails.dietrayRequirments.indexOf(req);
+ 
+  scope.addOrRemoveFilter = function(req) {
+    var index = scope.form.filterList.indexOf(req);
     if (index === -1) {
-      scope.searchDetails.dietrayRequirments.push(req);
+      scope.form.filterList.push(req);
     } else {
-      scope.searchDetails.dietrayRequirments.splice(index, 1);
+      scope.form.filterList.splice(index, 1);
     }
-    scope.searchDetails.filter = '';
-  };
-  scope.addOrRemoveRequirements = function(req) {
-    var index = scope.searchDetails.dietrayRequirments.indexOf(req);
-    if (index === -1) {
-      scope.searchDetails.dietrayRequirments.push(req);
-    } else {
-      scope.searchDetails.dietrayRequirments.splice(index, 1);
-    }
-    scope.searchDetails.filter = '';
+    scope.form.filterText = '';
   };
 
   scope.isRequirementChoosen = function(requirement) {
-    return scope.searchDetails.dietrayRequirments.indexOf(requirement);
+    return scope.form.filterList.indexOf(requirement);
   };
 
-  httpService.getHTTPRequest('app/locations/locations.json', function(list) {
-      scope.locations = list;
-    });
-  httpService.getHTTPRequest('app/dietary-requirements/dietary-requirements.json', function(response) {
-    scope.dietaryRequirementList = response.list;
-
+  httpService.getHTTPRequest(api_url.filters, function(response) {
+    scope.filtersOptions = response.list;
   });
-  httpService.getHTTPRequest('app/results/results.json', function(response) {
-    scope.results = response.list;
-
-  });
-
-    var inputFrom = document.getElementById('location');
-    var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom);
-google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
-        var place = autocompleteFrom.getPlace();
-        scope.searchDetails.location = place.formatted_address;
-        scope.$apply();
+  scope.results.getResults = function() {
+    httpService.getHTTPRequest(api_url.results, function(response) {
+      scope.results.data = response.list;
     });
+  };
+  scope.form.showOrHideFilterOptions = function() {
+    scope.form[showFilterOptions] =! scope.form[showFilterOptions];
+  };
+  scope.results.getResults();
+
+  scope.showOrHideElement = function(obj, element) {
+    obj[element] =! obj[element];
+  };
+
+  scope.hideElement = function(obj, element) {
+    obj[element] = false;
+  };
+  scope.showElement = function(obj, element) {
+    obj[element] = true;
+  };
+
+  var inputFrom = document.getElementById('location');
+  var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom);
+  google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
+          var place = autocompleteFrom.getPlace();
+          scope.form.location = place.formatted_address;
+          scope.$apply();
+        });
 }]);
 
 mainApp.directive('requirementButton', function() {
@@ -62,7 +67,7 @@ mainApp.directive('requirementButton', function() {
     restrict: 'E',
     scope: {
       value: '=',
-      searchDetails:"=",
+      form:"=",
       addOrRemoveRequirement:"&",
       isRequirementChoosen:"&"
     },

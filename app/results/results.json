@@ -2,33 +2,45 @@
   "list": [
     {
       "restraunt": "Kia",
-      "rating": 5,
-      "numberOfReviews": 300
+      "rating": [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":1}],
+      "numberOfReviews": 100,
+      "location": "",
+      "Allergens":""
     },
     {
       "restraunt": "Quay Street Kitchen",
-      "rating": 4,
-      "numberOfReviews": 900
+      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":0}],
+      "numberOfReviews": 900,
+      "location": "",
+      "Allergens":""
     },
     {
       "restraunt": "Dail",
-      "rating": 3.5,
-      "numberOfReviews": 100
+      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "numberOfReviews": 100,
+      "location": "",
+      "Allergens":""
     },
     {
       "restraunt": "Tusnu",
-      "rating": 3.5,
-      "numberOfReviews": 700
+      "rating":   [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "numberOfReviews": 700,
+      "location": "",
+      "Allergens":""
     },
     {
       "restraunt": "Papa Johns",
-      "rating": 3.5,
-      "numberOfReviews": 230
+      "rating":   [{"star":1}, {"star":1},{"star":5},{"star":0},{"star":0}],
+      "numberOfReviews": 110,
+      "location": "",
+      "Allergens":""
     },
     {
       "restraunt": "Buskers",
-      "rating": 3,
-      "numberOfReviews": 100
+      "rating":  [{"star":1}, {"star":1},{"star":0},{"star":0},{"star":0}],
+      "numberOfReviews": 100,
+      "location": "",
+      "Allergens":""
     }
   ]
 }

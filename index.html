@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="app/routes.js"></script>
+    <script src="app/services/url-service.js"></script> 
     <script src="app/wrapper/wrapper-controller.js"></script>
     <script src="app/services/http-service.js"></script>
     <script src="http://code.angularjs.org/1.4.8/angular-resource.js"></script>
@@ -16,61 +17,69 @@
   </head>
   <body ng-app="mainApp" ng-controller="wrapper-controller" >
     <div class="navigation-bar-c" ng-include="'app/navigation-bar/navigation-bar.html'"></div>
-    <h1 class ="h1-c">Find The Best Dish For You</h1>
-    <div class="dish-form-c" ng-show="searchDetails.showMainForm">
+    <h1 class ="h1-c">Find The Best Meal For You</h1>
+    <div class="meal-form-c" ng-show="form.showMainForm">
       <div>
-      
-        <form name = "form">
-          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="searchDetails.location" placeholder="Type Address"autocomplete="off" placeholder="Location" >
-          <input class ="form-input-c" type="text" name="dish" placeholder="Dish" ng-model="searchDetails.dish" list="dish" ng-change = "searchDetail.dish = form.dish.$viewValue">
-          <datalist id="dish">
+        <form>
+          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="form.location" placeholder="Type Address" placeholder="Location">
+          <input class = "form-input-c" type="text" name="meal" placeholder="meal" ng-model="form.meal" list="meal">
+          <datalist id="meal">
             <option value="Steak">
             <option value="Pasta">
           </datalist>
-          <button class="form-button-c " ng-click="searchDetails.showDetailedForm=! searchDetails.showDetailedForm ">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
-          <div ng-show="searchDetails.showDetailedForm ">
+          <button class="form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filter <i class="fa fa-filter" aria-hidden="true"></i>
+          </button>
+          <div ng-show="form.showFilterOptions ">
           <p>Add dietary requirement</p>
-          <input type="text " ng-model="searchDetails.filter " placeholder="Search for requirements">
+          <input type="text " ng-model="form.filterText " placeholder="Search for requirements">
           <div >
-          <requirement-button ng-repeat="value in dietaryRequirementList | filter: searchDetails.filter" value = "value" searchDetails ="searchDetails" add-or-remove-requirement = "addOrRemoveRequirements(value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>         
+          <requirement-button ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter( value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>         
           </div>
           <div>
-          <p>Filter</p>
           </div>
           </div>
-          <button class="form-button-c search-button-c" ng-click="searchResults.show.show = true; searchDetails.showMainForm = false" ng-disabled="searchDetails.location == '';  searchDetails.dish=='' " ng-class = "{'button-disabled-c' : searchDetails.location == '' || searchDetails.dish== ''}" >Search <i class="fa fa-search" aria-hidden="true"></i></button>
+          <button class="form-button-c search-button-c" ng-click=" results.getResults(); results.show = true; showElement(form, 'showSideForm'); hideElement(form, 'showMainForm'); hideElement(form, 'showFilterOptions')" ng-disabled="form.location == '';  form.meal=='' " ng-class = "{'button-disabled-c' : form.location == '' || form.meal== ''}" >Search <i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
       </div>
     </div>
-    <div ng-show="searchResults.show ">
-    <div class="filterParams">
-    <p>Search Data</p>
-    <p> <input class="form-input-c id="locationTextField" type="text" name="location" placeholder="{{searchDetails.location || 'Search...'}}" ng-model="searchDetails.location" list="location"></p>
-    <p><input class="form-input-c" type="text" name="dishs" placeholder="{{searchDetails.dish ||'Dish'}}" ng-model="searchDetails.dish" list="dishs">
-    <datalist id="dishs">
-    <option value="Steak">
-    <option value="Pasta">
-    <option value="Soup">
-    <option value="Pizza">
-    </datalist></p>
-    <button class="badge-c form-button-c " ng-click="showFilters =! showFilters">Filters {{searchDetails.dietrayRequirments.length || '0'}}</button> </p>
-    <p>
-    <input  ng-show ="showFilters"  id="requirements" class="form-input-c" type="text " ng-model="searchDetails.filter " placeholder="Filters: " list="requirements">
-    </p>
-    <div ng-show ="showFilters" class="side-bar-dietaryrequirement-list-c " >
-    
-    <requirement-button ng-repeat="value in dietaryRequirementList | filter: searchDetails.filter" value = "value" searchDetails ="searchDetails" add-or-remove-requirement = "addOrRemoveRequirements(value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>
-    <div class="dish-results-c " ng-hide="searchResults.show" >
-    <h2 >Search Results: {{results.length}}</h2>
-    <div ng-repeat="result in results ">
-    <h3>{{result.restraunt}}</h3>
-    <h4>{{result.rating}}</h4>
-    <h4>Reviews: {{result.NumberOfReviews}}</h4>
-    <h4>Description: {{result.Description}}</h4>
+    <div ng-show="form.showSideForm" >
+      <div class="filterParams">
+        <p>Search Data</p>
+        <p> 
+          <input class="form-input-c id="locationTextField" type="text" name="location" placeholder="{{form.location || 'Search...'}}" ng-model="form.location" list="location">
+        </p>
+        <p> 
+        <input class="form-input-c" type="text" name="meals" placeholder="{{form.meal ||'Meal'}}" ng-model="form.meal" list="meals">
+        </p>
+        <datalist id="meals">
+          <option value="Steak"></option>
+          <option value="Pasta"></option>
+          <option value="Soup"></option>
+          <option value="Pizza"></option>
+        </datalist>
+        <button class="badge-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filters {{form.filterList.length || '0'}}</button> 
+        <button class="form-button-c"  ng-click="showElement(results.show); results.getResults()" ng-disabled="form.location == '';  form.meal=='' " ng-class = "{'button-disabled-c' : form.location == '' || form.meal== ''}" >Update</button>
+        <p>
+          <input  ng-show ="form.showFilterOptions"  id="requirements" class="form-input-c" type="text " ng-model="form.filterText " placeholder="Filters: " list="requirements">
+        </p>
+        <div ng-show ="form.showFilterOptions" class="side-bar-dietaryrequirement-list-c " >
+          <requirement-button ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter(value)" is-requirement-choosen ="isRequirementChoosen(value)">
+          </requirement-button>
+        </div>
+      </div>
     </div>
+    <div class="meal-results-c " ng-show="results.show" >
+      <h2 >Top Rated {{form.meal}} in {{form.location}}</h2>
+      <div class = "results-data-c" ng-repeat="data in results.data ">
+       
+        <p>{{data.restraunt}}: <i class="star" ng-repeat="star in data.rating" ng-class="{'fa fa-star-o': star.star === 0,'fa fa-star' : star.star === 1 , 'fa fa-star-half-o': star.star === 5}" aria-hidden="true"></i></p>
+
+        <h4>Reviews: {{data.NumberOfReviews}}</h4>
+        <h4>Description: {{data.Description}}</h4>
+      </div>
     </div>
   </body>
-  <script type='text/javascript'>
+  <script type='text/javascript'> 
     function initialize() {
       var input = document.getElementById('locationTextField');
     
