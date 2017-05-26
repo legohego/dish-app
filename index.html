@@ -75,7 +75,7 @@
       </div>
     </div>
     <div class="meal-results-c " ng-show="results.show" id="style-1" >
-      <h2 >Top Rated {{form.meal}} in {{form.location}}</h2>
+
       <div class = "results-data-c" ng-repeat="data in results.data " >
        
         <p>{{data.restraunt}}: <i class="star" ng-repeat="star in data.rating" ng-class="{'fa fa-star-o': star.star === 0,'fa fa-star' : star.star === 1 , 'fa fa-star-half-o': star.star === 5}" aria-hidden="true"></i></p>
