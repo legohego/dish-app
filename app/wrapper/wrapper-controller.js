@@ -1,4 +1,4 @@
-mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', 'urlService', function(scope, rootScope, httpService, urlService) {
+mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', 'urlService', '$location', function(scope, rootScope, httpService, urlService, location) {
   var api_url = urlService.returnUrl();
   scope.form = {
     location: '',
@@ -13,6 +13,37 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
     show: false,
     data: []
   };
+  scope.input = {
+    meal:'',
+    location: '',
+  };
+  scope.results.getResults = function() {
+    httpService.getHTTPRequest(api_url.results, function(response) {
+      scope.results.data = response.list;
+    });
+  };
+  scope.url_params = location.search();
+  scope.hasUserPerformedASearch = function() {
+    console.log('nukk', location.search().location);
+    if ((location.search().location !== '' && location.search().location !== undefined)  && (location.search().dish !== '' && location.search().meal  !== undefined) ) {
+      console.log('nukkss', location.search().location);
+      scope.form.showMainForm = false;
+      scope.form.showSideForm = true;
+      scope.input.location = location.search().location;
+      scope.form.meal = location.search().meal;
+      scope.form.location = location.search().location;
+      scope.input.meal = location.search().meal;
+      scope.results.show = true;
+      scope.results.getResults();
+     
+    }else {
+      scope.form.showMainForm = true;
+      scope.form.showSideForm = false;
+    }
+  };
+  scope.hasUserPerformedASearch();
+  //scope.url = window.location.href;
+  //scope.res = scope.url.split('/');
  
   scope.addOrRemoveFilter = function(req) {
     var index = scope.form.filterList.indexOf(req);
@@ -31,11 +62,7 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
   httpService.getHTTPRequest(api_url.filters, function(response) {
     scope.filtersOptions = response.list;
   });
-  scope.results.getResults = function() {
-    httpService.getHTTPRequest(api_url.results, function(response) {
-      scope.results.data = response.list;
-    });
-  };
+ 
   scope.form.showOrHideFilterOptions = function() {
     scope.form[showFilterOptions] =! scope.form[showFilterOptions];
   };
@@ -51,7 +78,10 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
   scope.showElement = function(obj, element) {
     obj[element] = true;
   };
-
+  scope.form.search = function() {
+    scope.form.location = scope.input.location;
+    scope.form.meal = scope.input.meal;
+  };
   var inputFrom = document.getElementById('location');
   var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom);
   google.maps.event.addListener(autocompleteFrom, 'place_changed', function() {
