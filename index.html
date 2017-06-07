@@ -8,12 +8,18 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="app/routes.js"></script>
     <script src="app/services/url-service.js"></script> 
+    <script src="app/services/gservice.js"></script> 
     <script src="app/wrapper/wrapper-controller.js"></script>
     <script src="app/services/http-service.js"></script>
+    <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
     <script src="http://code.angularjs.org/1.4.8/angular-resource.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/wall.css">
+    <link rel="stylesheet" href="assets/css/map.css">
+    <link rel="stylesheet" href="assets/css/nav-bar.css">
     <base href="dish">
   </head>
   <body ng-app="mainApp" ng-controller="wrapper-controller" >
@@ -21,28 +27,27 @@
       
     </div>
    
-    <div class="meal-form-c" ng-show="form.showMainForm">
-     <h1 class ="h1-c">Find The Best Meal For You </h1>
+    <div class="wrapper-main-form-c" ng-show="form.showMainForm">
       <div>
-        <form>
-          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="input.location" placeholder="Type Address" placeholder="Location">
-          <input class = "form-input-c" type="text" name="meal" placeholder="meal" ng-model="input.meal" list="meal">
+        <form class =".main-form-c"name = "searchForm" novalidate>
+          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="input.location" placeholder="Type Address" placeholder="Location" required>
+          <input class = "form-input-c" type="text" name="meal" placeholder="meal" ng-model="input.meal" list="meal" required>
           <datalist id="meal">
             <option value="Steak"></option>
             <option value="Pasta"></option>
           </datalist>
-          <button class="form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filter <i class="fa fa-filter" aria-hidden="true"></i> {{form.filterList.length || '0'}}
+          <button class="button-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filter <i class="fa fa-filter" aria-hidden="true"></i> {{form.filterList.length || '0'}}
           </button>
           <div ng-show="form.showFilterOptions ">
           <p>Add dietary requirement</p>
           <input type="text " ng-model="form.filterText " placeholder="Search for requirements">
           <div >
-          <requirement-button ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter( value)" is-requirement-choosen ="isRequirementChoosen(value)"></requirement-button>         
+          <filter-option ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter( value)" is-requirement-choosen = "isRequirementChoosen(value)"></filter-option>         
           </div>
           <div>
           </div>
           </div>
-          <button class="form-button-c search-button-c" ng-click="form.search(); results.getResults(); results.show = true; showElement(form, 'showSideForm'); hideElement(form, 'showMainForm'); hideElement(form, 'showFilterOptions')" ng-disabled="input.location == '';  input.meal=='' " ng-class = "{'button-disabled-c' : input.location == '' || input.meal== ''}" >Search <i class="fa fa-search" aria-hidden="true"></i></button>
+          <button class="button-c form-button-c search-button-c" ng-click="form.search(); results.getResults(); results.show = true; showElement(form, 'showSideForm'); hideElement(form, 'showMainForm'); hideElement(form, 'showFilterOptions')" ng-disabled="searchForm.$invalid" >Search <i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
       </div>
     </div>
@@ -50,7 +55,7 @@
     </div>
     <div ng-show="form.showSideForm" >
       <div class="filterParams">
-        <p>Search Data</p>
+  
         <p> 
           <input class="form-input-c id="locationTextField" type="text" name="location" placeholder="{{input.location || 'Search...'}}" ng-model="input.location" list="location">
         <input class="form-input-c" type="text" name="meals" placeholder="{{input.meal ||'Meal'}}" ng-model="input.meal" list="meals">
@@ -62,51 +67,35 @@
           <option value="Pizza"></option>
         </datalist>
         <p>
-        <button class="badge-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filters <i class="fa fa-filter" aria-hidden="true"></i> {{form.filterList.length || '0'}}</button> 
-        <button class="form-button-c"  ng-click="showElement(results.show); results.getResults(); form.search()" ng-disabled="input.location == '';  input.meal=='' " ng-class = "{'button-disabled-c' : input.location == '' || input.meal== ''}" >Update</button>
+        <button class="button-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filters <i class="fa fa-filter" aria-hidden="true"></i> <span class="badge-c">{{form.filterList.length || '0'}}</span></button> 
+        <button class="button-c form-button-c"  ng-click="showElement(results.show); results.getResults(); form.search()" ng-disabled="input.location == '';  input.meal=='' " ng-class = "{'button-disabled-c' : input.location == '' || input.meal== ''}" >Update</button>
         <p>
         </p>
-          <input  ng-show ="form.showFilterOptions"  id="requirements" class="form-input-c" type="text " ng-model="form.filterText " placeholder="Filters: " list="requirements">
+          <input  ng-show ="form.showFilterOptions"  id="requirements" class="form-input-c side-bar-input" type="text " ng-model="form.filterText " placeholder="Filters: " list="requirements">
         </p>
-        <div ng-show ="form.showFilterOptions" class="side-bar-dietaryrequirement-list-c " >
-          <requirement-button ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter(value)" is-requirement-choosen ="isRequirementChoosen(value)">
-          </requirement-button>
+        <div ng-show ="form.showFilterOptions" class="wrapper-filter-options" >
+          <filter-option ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter(value)" is-requirement-choosen ="isRequirementChoosen(value)">
+          </filter-option>
         </div>
       </div>
     </div>
-    <div class="meal-results-c " ng-show="results.show" id="style-1" >
+    <div class="wall-c " ng-show="results.show" id="style-1" >
 
-      <div class = "results-data-c" ng-repeat="data in results.data " >
-       
-        <p>{{data.restraunt}}: <i class="star" ng-repeat="star in data.rating" ng-class="{'fa fa-star-o': star.star === 0,'fa fa-star' : star.star === 1 , 'fa fa-star-half-o': star.star === 5}" aria-hidden="true"></i></p>
+      <div class = "wrapper-wall-data-c" ng-repeat="data in results.data " >
+       <div class = "image-holder"><p>Image</p><p>150 x 150</p></div>
+        <p class = "wall-data-p-c">{{data.restraunt}}: <i class="star" ng-repeat="star in data.rating" ng-class="{'fa fa-star-o': star.star === '0','fa fa-star' : star.star === '1' , 'fa fa-star-half-o': star.star === '.5'}" aria-hidden="true"></i></p>
 
-        <h4>Reviews: {{data.NumberOfReviews}}</h4>
-        <h4>Description: {{data.Description}}</h4>
+        <p class = "wall-data-p-c">Reviews: {{data.NumberOfReviews}}</p>
+        <p class = "wall-data-p-c">Description: {{data.Description}}</p>
+        <p class = "wall-data-p-c">Allergines</p>
+        <p class = "wall-data-p-c"><i class="fa fa-eur" aria-hidden="true"></i></p>
       </div>
      
-    </div> <div class = "maps" id="googleMap">
+    </div> <div class = "wrapper-maps">
+    <div ng-show="results.show" class = "maps" id="googleMap"></div>
         
       </div>
 
   </body>
-  <script type='text/javascript'> 
-    function initialize() {
-      var input = document.getElementById('locationTextField');
-    
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    };
-    
-      google.maps.event.addDomListener(window, 'load', initialize);
-    
-  </script>
-  <script>
-function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQQmkW30DNP4DaeizpsJEMlHsMTb70lBQ&callback=myMap"></script>
+
 </html>

@@ -2,129 +2,129 @@
   "list": [
     {
       "restraunt": "Kia",
-      "rating": [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":1}],
+      "rating": [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"1"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [53.293104840839476, -9.052734372500026] 
     },
     {
       "restraunt": "Quay Street Kitchen",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"0"}],
       "numberOfReviews": 900,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.14912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Dail",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.03912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Tusnu",
-      "rating":   [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 700,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.01912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Papa Johns",
-      "rating":   [{"star":1}, {"star":1},{"star":5},{"star":0},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":".5"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 110,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04942948358401, 53.274323867396056]
     },
     {
       "restraunt": "Buskers",
-      "rating":  [{"star":1}, {"star":1},{"star":0},{"star":0},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"0"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04932948358401, 53.27437396056]
     },
         {
       "restraunt": "Kia",
-      "rating": [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":1}],
+      "rating": [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"1"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.54912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Quay Street Kitchen",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"0"}],
       "numberOfReviews": 900,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.273323867396056]
     },
     {
       "restraunt": "Dail",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Tusnu",
-      "rating":   [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 700,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Papa Johns",
-      "rating":   [{"star":1}, {"star":1},{"star":5},{"star":0},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":".5"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 110,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Buskers",
-      "rating":  [{"star":1}, {"star":1},{"star":0},{"star":0},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"0"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
         {
       "restraunt": "Kia",
-      "rating": [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":1}],
+      "rating": [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"1"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Quay Street Kitchen",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":1},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":"1"},{"star":"0"}],
       "numberOfReviews": 900,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Dail",
-      "rating":  [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Tusnu",
-      "rating":   [{"star":1}, {"star":1},{"star":1},{"star":5},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":"1"},{"star":".5"},{"star":"0"}],
       "numberOfReviews": 700,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Papa Johns",
-      "rating":   [{"star":1}, {"star":1},{"star":5},{"star":0},{"star":0}],
+      "rating":   [{"star":"1"}, {"star":"1"},{"star":".5"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 110,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+         "location": [-9.04912948358401, 53.274323867396056]
     },
     {
       "restraunt": "Buskers",
-      "rating":  [{"star":1}, {"star":1},{"star":0},{"star":0},{"star":0}],
+      "rating":  [{"star":"1"}, {"star":"1"},{"star":"0"},{"star":"0"},{"star":"0"}],
       "numberOfReviews": 100,
-      "location": "",
-      "Allergens":""
+      "Allergens":"",
+      "location": [-9.04912948358401, 53.274323867396056]
     }
   ]
 }

@@ -1,0 +1,39 @@
+.navigation-bar-c {
+	border-color: #30c9e8;
+	font-size: 20px;
+	margin: 0 auto;
+	max-width: 100%;
+	min-height: 50px;
+	text-align: center;
+	background-color: white;
+	margin: 0px;
+}
+
+.navigation-bar-c>ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.navigation-bar-c>p {
+	float: left;
+	margin: 0px;
+	padding-left: 5px;
+}
+
+.navigation-bar-c>ul>li {
+	padding-right: 5px;
+	margin: 0px;
+	float: left;
+	list-style-type: none;
+	text-decoration: none;
+}
+
+.navigation-bar-c>ul>li>button {
+	border-radius: 7px;
+	background-color: white;
+}
+
+.navigation-bar-c>ul>li>button>a {
+	color: black;
+	text-decoration-line: none;
+}

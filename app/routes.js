@@ -1,4 +1,4 @@
-var mainApp = angular.module('mainApp', []);
+var mainApp = angular.module('mainApp', ['geolocation', 'gservice']);
 
 mainApp.config(function($locationProvider) {
   

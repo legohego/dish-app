@@ -1,262 +1,108 @@
-.dropdown.dropdown-scroll .dropdown-menu {
-    max-height: 200px;
-    width: 60px;
-    overflow: auto;
-}
-.search-control {
-    padding: 5px 10px;
-}
-
 body {
 	margin: 0px;
 	padding: 0px;
 	min-height: 800px;
-	background: linear-gradient(180deg,  #30c9e8 400px, #fdfdfd 400px);
+	background: linear-gradient(180deg, #30c9e8 400px, #fdfdfd 400px);
 	background-repeat: no-repeat;
-
-}
-.meal-form-c {
-	margin-top: 100px !important;
-	border: solid 5px;
-	border-color: #329eb3;
-	border-radius: 25px;
-	font-size: 20px;
-	margin:0 auto;
-	max-width: 50%;
-	text-align: center;
-	background-color: #fdfdfd;
-
-}
-.meal-form-c > h2 {
-	padding-top: 0px;
-	margin: 0px;
-}
-.meal-form-c > div > form > {
-	margin-left: 5px;
-
+	overflow:hidden;
 }
 
-.meal-form-c > div > form {
-	
-	border-radius: 25px;
-	margin: 10px;
-	padding: 20px;
-}
-.meal-form-c > div > form > input {
-
-	border-radius: 25px;
-	padding: 10px;
-  
-}
-.meal-form-c > div > form > div > input {
-
-	border-radius: 25px;
-	padding: 10px;
-  
-}
-.meal-form-c > div > form > button {
-	border-radius: 25px;
-	background-color: white;
-	padding: 10px;
-  
-}
- .form-button-c {
-	border-radius: 25px;
-	background-color: white;
-	border-color: #329eb3;
-	padding: 10px;
-	margin: 5px;
-	cursor: pointer;
-
-}
-.form-input-c {
-	border-radius: 25px;
-	background-color: white;
-	border-color: #329eb3;
-	padding: 10px;
-	margin: 5px;
-	cursor: pointer;
-	max-width:70px;
-
-}
-.h1-c {
-	text-align: center;
-color: #fdfdfd;
-}
-.button-disabled-c {
-	cursor:no-drop !important;
-	background-color:  white  !important;
-}
-
- .requirement-button-c {
-	border-radius: 25px;
-	background-color: white;
-	padding: 10px;
-	margin: 5px;
-	cursor:pointer;
-}
 button:hover {
-    background-color: #66ff33 !important;
-
-}
-.search-button-c {
-    display: block;
-    margin:0 auto;
-  
-}
-
-.filter-button-c {
-	display: block;
-    margin:0 auto;
-    margin-top: 10px;
-}
-
-
-.navigation-bar-c {
-	
-	border-color: #30c9e8;
-	font-size: 20px;
-	margin:0 auto;
-	max-width: 100%;
-	min-height: 50px;
-	text-align: center;
-	background-color: white;
-	margin: 0px;
-    
-}
-
-.navigation-bar-c > ul {
-
-	padding: 0px;
-	margin: 0px;
-}
-.navigation-bar-c > p {
-	float: left;
-	margin: 0px;
-	padding-left: 5px;
-}
-.navigation-bar-c > ul > li {
-	padding-right: 5px;
-	margin: 0px;
-	float: left;
-	list-style-type: none;
-	text-decoration: none;
-}
-.navigation-bar-c > ul > li > button{
-	border-radius: 25px;
-	background-color: white;
-}
-.navigation-bar-c > ul > li > button> a{
-	color: black;
-	text-decoration-line: none;
-
-}
-.dietaryrequirement-list-c {
-	border: solid 2px;
-    border-radius: 25px;
-    margin:0 auto;
-	max-width: 90%;
-    min-height: 50px;
-	background-color: white;
-	border-color: #329eb3;
-	padding: px;
-	margin: 5px;
-	cursor: pointer;
-}
-.side-bar-dietaryrequirement-list-c {
-	border: solid 2px;
-    border-radius: 25px;
-    margin:0 auto;
-	max-width: 250px;
-    min-height: 50px;
-	background-color: white;
-	border-color: #329eb3;
-	padding: px;
-	margin: 5px;
-	cursor: pointer;
-}
-.filterParams {
-
-    display: block;	
-    float: left;
-	margin-top: 0px !important;
-	border: solid 5px;
-	border-color: #329eb3;
-	border-radius: 25px;
-	font-size: 20px;
-    margin-left: 20px;
-	text-align: left;
-	background-color: white;
-	min-width: 15%;
-}
-.filterParams > p{
- padding-left: 10px;
-
-}
-.meal-results-c {
-	background-color: #fdfdfd;
-	border: solid 5px;
-	border-radius: 25px;
-	border-color: #329eb3;
-	font-size: 20px;
-	float: left;
-	max-width: 100%;
-	min-width:43%;
-	text-align: center;
-	 margin-left: 10px;
-	
-	 max-height: 900px;
-
-}
-.choosen {
-	background-color: #42e5f4;
+	background-color: #66ff33 !important;
 }
 
 .badge-c {
 	cursor: pointer;
-	 background-color: white;
-     color: black;
-     border-radius: 25px;
-     min-width: 10px;
-     min-height: 10px;
-}
-.results-data-c {
- border: solid 2px;
- border-color: #329eb3;
- margin: 5px;
- border-radius: 25px;
-
-}
-.star{
-	color:  #30c9e8;
+	background-color:  #329eb3;
+	color: white;
+	border-radius: 50%;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
-#style-1::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+.button-disabled-c {
+	cursor: no-drop !important;
+	background-color: white !important;
 }
 
-#style-1::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
-}
-
-#style-1::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
-}
-.maps {
+.button-c {
+	border-radius: 7px;
+	padding: 7px;
 	margin: 5px;
-	border-radius: 25px;
-	float: right;
-	border: solid 5px;
+	cursor: pointer;
+	min-width: 100px !important;
+}
+
+.form-button-c {
+	background-color: white;
 	border-color: #329eb3;
-	width: 35%;
-	min-height: 800px;
-	 margin-right: 20px;
+	min-width: 100px !important;
+	padding: 10px !important;
+}
+.filter-option-c {
+	border-radius: 7px;
+	background-color: white;
+}
+
+
+.filter-option-active-c {
+	background-color: #42e5f4;
+}
+
+.dropdown.dropdown-scroll .dropdown-menu {
+	max-height: 200px;
+	width: 60px;
+	overflow: auto;
+}
+
+.h1-c {
+	text-align: center;
+	color: #fdfdfd;
+}
+
+.image-holder {
+	float: left;
+	min-height: 150px;
+	min-width: 150px;
+	border: solid 1px;
+	border-color: #329eb3;
+	text-align: center;
+	margin-right: 10px;
+}
+
+
+.wrapper-filter-options {
+	border: solid 1px;
+	border-radius: 7px;
+	margin: 0 auto;
+	max-width: 225px;
+	min-height: 50px;
+	background-color: white;
+	border-color: #329eb3;
+	padding: 0px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.side-bar-input {
+	min-width: 85% !important;
+}
+
+#style-1::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar {
+	width: 12px;
+	background-color: white;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color:  white;
 }

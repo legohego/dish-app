@@ -1,0 +1,15 @@
+
+.maps {
+	border-radius: 7px;
+	float: right;
+	border: solid 5px;
+	border-color: #329eb3;
+	width: 35%;
+	max-height: 700px;
+	min-height: 700px;
+	margin-right: 20px;
+}
+
+.star {
+	color: #30c9e8;
+}

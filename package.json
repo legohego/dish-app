@@ -9,9 +9,7 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "jshint-stylish": "latest",
-    "angular-jwt": "latest",
-    "angular-storage": "latest",
-    "angular-ui-router": "latest"
+
   },
   "dependencies": {
     "ng-places-autocomplete": "^1.2.1"

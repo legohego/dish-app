@@ -1,0 +1,28 @@
+.wall-c {
+	background-color: #fdfdfd;
+	border: solid 5px;
+	border-radius: 7px;
+	border-color: #329eb3;
+	font-size: 20px;
+	float: left;
+	max-width: 100%;
+	min-width: 43%;
+	text-align: left;
+	margin-left: 10px;
+	max-height: 700px;
+	min-height: 700px;
+	overflow-y:scroll;
+}
+
+.wrapper-wall-data-c {
+	border-bottom: solid 1px;
+	border-color: #329eb3;
+	margin: 5px;
+	padding-bottom: 15px;
+	min-height: 150px;
+}
+
+.wall-data-p-c {
+	font-family: Sans-serif !important;
+	font-size: 12px;
+}

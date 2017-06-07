@@ -1,4 +1,4 @@
-mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', 'urlService', '$location', function(scope, rootScope, httpService, urlService, location) {
+mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService', 'urlService', '$location', 'geolocation', 'gservice', function(scope, rootScope, httpService, urlService, location, geolocation, gservice) {
   var api_url = urlService.returnUrl();
   scope.form = {
     location: '',
@@ -20,13 +20,14 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
   scope.results.getResults = function() {
     httpService.getHTTPRequest(api_url.results, function(response) {
       scope.results.data = response.list;
+      gservice.refresh(53.274323867396056, -9.04912948358401);
     });
   };
+
+
   scope.url_params = location.search();
   scope.hasUserPerformedASearch = function() {
-    console.log('nukk', location.search().location);
     if ((location.search().location !== '' && location.search().location !== undefined)  && (location.search().dish !== '' && location.search().meal  !== undefined) ) {
-      console.log('nukkss', location.search().location);
       scope.form.showMainForm = false;
       scope.form.showSideForm = true;
       scope.input.location = location.search().location;
@@ -42,8 +43,6 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
     }
   };
   scope.hasUserPerformedASearch();
-  //scope.url = window.location.href;
-  //scope.res = scope.url.split('/');
  
   scope.addOrRemoveFilter = function(req) {
     var index = scope.form.filterList.indexOf(req);
@@ -91,7 +90,7 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
         });
 }]);
 
-mainApp.directive('requirementButton', function() {
+mainApp.directive('filterOption', function() {
   
   return {
     restrict: 'E',
@@ -101,7 +100,7 @@ mainApp.directive('requirementButton', function() {
       addOrRemoveRequirement:"&",
       isRequirementChoosen:"&"
     },
-    templateUrl:'app/directives/button.html',
+    templateUrl:'app/directives/filter-option.html',
     controller: function($scope) {
      
     }
