@@ -1,7 +1,8 @@
-body {
-	margin: 0px;
-	padding: 0px;
-	min-height: 800px;
+html,body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 	background: linear-gradient(180deg, #30c9e8 400px, #fdfdfd 400px);
 	background-repeat: no-repeat;
 	overflow:hidden;
@@ -9,6 +10,9 @@ body {
 
 button:hover {
 	background-color: #66ff33 !important;
+}
+p {
+	padding-left: 0px !important;
 }
 
 .badge-c {
@@ -40,7 +44,13 @@ button:hover {
 	border-color: #329eb3;
 	min-width: 100px !important;
 	padding: 10px !important;
+	
+
 }
+#filter-form-button {
+	display:block !important;
+}
+
 .filter-option-c {
 	border-radius: 7px;
 	background-color: white;
@@ -86,8 +96,10 @@ button:hover {
 	cursor: pointer;
 }
 
-.side-bar-input {
-	min-width: 85% !important;
+.wrapper-input-filter-c {
+	min-width: 70%;
+	display: inline;
+	
 }
 
 #style-1::-webkit-scrollbar-track {

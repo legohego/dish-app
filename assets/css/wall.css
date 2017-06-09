@@ -9,8 +9,7 @@
 	min-width: 43%;
 	text-align: left;
 	margin-left: 10px;
-	max-height: 700px;
-	min-height: 700px;
+    height: 90%;
 	overflow-y:scroll;
 }
 

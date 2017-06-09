@@ -23,7 +23,11 @@ mainApp.controller('wrapper-controller', ['$scope', '$rootScope', 'httpService',
       gservice.refresh(53.274323867396056, -9.04912948358401);
     });
   };
-
+scope.active =  {
+    location: false,
+    meal: false,
+    filter: false
+};
 
   scope.url_params = location.search();
   scope.hasUserPerformedASearch = function() {

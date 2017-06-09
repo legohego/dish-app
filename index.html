@@ -30,8 +30,10 @@
     <div class="wrapper-main-form-c" ng-show="form.showMainForm">
       <div>
         <form class =".main-form-c"name = "searchForm" novalidate>
-          <input  autocomplete="off" class ="form-input-c" id="location" type="text" ng-model="input.location" placeholder="Type Address" placeholder="Location" required>
-          <input class = "form-input-c" type="text" name="meal" placeholder="meal" ng-model="input.meal" list="meal" required>
+
+
+         <span   ng-class = "{'active' : active.location === true }" class= "wrapper-input"><i class="fa fa-map-marker" aria-hidden="true"></i> <input ng-blur="active.location = false" ng-focus="active.location = true" autocomplete="off" class ="input-c" id="location" type="text" ng-model="input.location" placeholder="Type Address" placeholder="Location" required></span>
+          <span  ng-class = "{'active' : active.meal === true }"  class= "wrapper-input"><i  class="fa fa-cutlery" aria-hidden="true"></i><input ng-blur="active.meal = false" ng-focus="active.meal = true" class="input-c" type="text" name="meal" placeholder="meal" ng-model="input.meal" list="meal" required></span>
           <datalist id="meal">
             <option value="Steak"></option>
             <option value="Pasta"></option>
@@ -40,7 +42,7 @@
           </button>
           <div ng-show="form.showFilterOptions ">
           <p>Add dietary requirement</p>
-          <input type="text " ng-model="form.filterText " placeholder="Search for requirements">
+            <span  ng-class = "{'active' : active.filter === true }"  class= "wrapper-input"><i  class="fa fa-search" aria-hidden="true"></i><input ng-blur="active.filter = false" ng-focus="active.filter = true" type="text " ng-model="form.filterText " placeholder="Search for requirements" class = "input-c"></span>
           <div >
           <filter-option ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter( value)" is-requirement-choosen = "isRequirementChoosen(value)"></filter-option>         
           </div>
@@ -52,32 +54,31 @@
       </div>
     </div>
   
-    </div>
+    
     <div ng-show="form.showSideForm" >
-      <div class="filterParams">
-  
-        <p> 
-          <input class="form-input-c id="locationTextField" type="text" name="location" placeholder="{{input.location || 'Search...'}}" ng-model="input.location" list="location">
-        <input class="form-input-c" type="text" name="meals" placeholder="{{input.meal ||'Meal'}}" ng-model="input.meal" list="meals">
-        </p>
+      <form class="filterParams">
+         <span   ng-class = "{'active' : active.location === true }" class= "wrapper-input"><i class="fa fa-map-marker" aria-hidden="true"></i> <input ng-blur="active.location = false" ng-focus="active.location = true" class="input-c input-side-bar-c" id="locationTextField" type="text" name="location" placeholder="{{input.location || 'Search...'}}" ng-model="input.location" list="location"></span>
+         <span  ng-class = "{'active' : active.meal === true }"  class= "wrapper-input"><i  class="fa fa-cutlery" aria-hidden="true"></i><input ng-blur="active.meal = false" ng-focus="active.meal = true" class="input-c input-side-bar-c" type="text" name="meals" placeholder="{{input.meal ||'Meal'}}" ng-model="input.meal" list="meals"  ng-class = "{'active-input' : active.location === true }"></span>
+       
         <datalist id="meals">
           <option value="Steak"></option>
           <option value="Pasta"></option>
           <option value="Soup"></option>
           <option value="Pizza"></option>
         </datalist>
-        <p>
-        <button class="button-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filters <i class="fa fa-filter" aria-hidden="true"></i> <span class="badge-c">{{form.filterList.length || '0'}}</span></button> 
-        <button class="button-c form-button-c"  ng-click="showElement(results.show); results.getResults(); form.search()" ng-disabled="input.location == '';  input.meal=='' " ng-class = "{'button-disabled-c' : input.location == '' || input.meal== ''}" >Update</button>
-        <p>
-        </p>
-          <input  ng-show ="form.showFilterOptions"  id="requirements" class="form-input-c side-bar-input" type="text " ng-model="form.filterText " placeholder="Filters: " list="requirements">
-        </p>
+      
+        <button id="filter-form-button" class="button-c form-button-c " ng-click="showOrHideElement(form, 'showFilterOptions')">Filters <i class="fa fa-filter" aria-hidden="true"></i> <span class="badge-c">{{form.filterList.length || '0'}}</span></button> 
+        <button id="update-form-button" class="button-c form-button-c"  ng-click="showElement(results.show); results.getResults(); form.search()" ng-disabled="input.location == '';  input.meal=='' " ng-class = "{'button-disabled-c' : input.location == '' || input.meal== ''}" >Update</button>
+        <div>          
+ <span style="margin-left: 5px" ng-show ="form.showFilterOptions" ng-class = "{'active' : active.filter === true }"  class= "wrapper-input wrapper-input-filter-c"><i class="fa fa-search" aria-hidden="true"></i><input ng-blur="active.filter = false" ng-focus="active.filter = true" id="requirements" class="input-c" type="text " ng-model="form.filterText " placeholder="Filters: " list="requirements"></span>
+      
         <div ng-show ="form.showFilterOptions" class="wrapper-filter-options" >
           <filter-option ng-repeat="value in filtersOptions | filter: form.filterText" value = "value" form ="form" add-or-remove-requirement = "addOrRemoveFilter(value)" is-requirement-choosen ="isRequirementChoosen(value)">
           </filter-option>
         </div>
-      </div>
+        </div>
+
+      </form>
     </div>
     <div class="wall-c " ng-show="results.show" id="style-1" >
 
@@ -91,10 +92,10 @@
         <p class = "wall-data-p-c"><i class="fa fa-eur" aria-hidden="true"></i></p>
       </div>
      
-    </div> <div class = "wrapper-maps">
+    </div> 
     <div ng-show="results.show" class = "maps" id="googleMap"></div>
         
-      </div>
+      
 
   </body>
 
